@@ -17,10 +17,11 @@ const scraperObject = {
         await page.waitForSelector("#inputText");
         // await page.$eval("#inputText", el => el.value = "T");
 
+
         for(let i = 0; i < inputText.length; i++) {
             // Input each character into the text field
-            await page.$eval("#inputText", el => el.value = `${inputText[i]}`)
-            
+            let char = String(inputText[i])
+            await page.$eval("#inputText", (el, char) => el.value = `${char}`)
             // Retrieve the output text
             await page.waitForSelector("#taag_output_text");
             const text = await page.evaluate(() => {
