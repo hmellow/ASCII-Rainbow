@@ -1,10 +1,9 @@
 const fs = require('fs');
 let inputText = "Testing";
 const colorsArr = ["rgb(255, 0, 0)", "rgb(255, 165, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 0, 255)", "rgb(143,0,255)"];
+let outputB64 = [];
 let font = "Alpha";
 let cache = {};
-
-// TODO load cache from json
 
 // read JSON object from file
 fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
@@ -14,9 +13,9 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
 
     // parse JSON object
     cache = JSON.parse(data.toString());
+    cache["font"] = font;
 
-    // print JSON object
-    console.log(cache);
+    console.log("JSON data loaded")
 });
 
 const scraperObject = {
@@ -59,7 +58,6 @@ const scraperObject = {
         } 
 
         // convert JSON object to string
-        cache["font"] = font;
         const data = JSON.stringify(cache);
 
         // write JSON string to a file
@@ -84,8 +82,8 @@ const scraperObject = {
 
         // Generate base64 image URL
         const dataUri = '[data-url="convert-image-to-data-uri"]';
-        const elements = await page.$x("//div[@class='widget widget-chain']")
-        await elements[0].click() 
+        const elements = await page.$x("//div[@class='widget widget-chain']");
+        await elements[0].click();
         await page.waitForSelector(dataUri);
         page.$eval(dataUri, elem => elem.click());
 
@@ -98,28 +96,21 @@ const scraperObject = {
             await page.$eval('.data-wrapper textarea', (el, input) => el.value = input, artOutput[i - 6]);
             await page.type('.data-wrapper textarea', " "); // To make sure input is recognized
 
-            // RM: b64
-
+            // RM'd: b64
 
             // Unique selector for the right copy button. Don't ask questions, just leave it alone. Please.
             await page.waitForSelector("div.tool-chained>div:nth-child(4)>div:nth-child(1)>div:nth-child(2)>div>div:nth-child(2)>div:nth-child(1)>div:nth-child(4)");
             const base64_url = await page.evaluate(_ => {
-            // Press the copy button, which selects the text
-            let copy = document.getElementsByClassName("widget-copy")[3];
-            copy.click();
-
-            // Get and return the selected text (the base64 URL)
-            let selection = window.getSelection().toString();
-            console.log(selection);
+                // Press the copy button, which selects the text
+                let copy = document.getElementsByClassName("widget-copy")[3];
+                copy.click();
+      
+                // Get and return the selected text (the base64 URL)
+                let selection = window.getSelection().toString();
+                return selection;
             });
+            outputB64.push(base64_url);
 
-
-        
-        // console.log(artOutput);
-        // for(let j = 0; j < artOutput.length; j++) {
-        //     console.log(artOutput[j]);
-        // }
-        
         // await browser.close();
     }
 }
