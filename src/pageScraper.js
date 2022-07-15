@@ -95,7 +95,7 @@ const scraperObject = {
             await page.$eval('[data-index="text-color"]', (el, color) => el.value = color, colorsArr[i % 6]);
 
             // Input ASCII
-            await page.$eval('.data-wrapper textarea', (el, input) => el.value = input, artOutput[i-6]);
+            await page.$eval('.data-wrapper textarea', (el, input) => el.value = input, artOutput[i - 6]);
             await page.type('.data-wrapper textarea', " "); // To make sure input is recognized
 
             // RM: b64
