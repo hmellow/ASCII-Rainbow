@@ -1,4 +1,3 @@
-const { browser } = require("discord-rpc/src/constants");
 const pageScraper = require("./pageScraper")
 
 
@@ -8,7 +7,7 @@ async function scrapeAll(browserInstance) {
         browser = await browserInstance;
         await pageScraper.scraper(browser);
     } catch(err) {
-        console.log("An error occurred with the browser: ", err);
+        console.log("An error occurred with the browser, which is just downright annoying. Well, better get to fixing it :( ", err);
     }
 }
 
