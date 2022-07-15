@@ -2,6 +2,7 @@ const fs = require('fs');
 let inputText = "Testing";
 const colorsArr = ["rgb(255, 0, 0)", "rgb(255, 165, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 0, 255)", "rgb(143,0,255)"];
 let font = "Alpha";
+let cache = {};
 
 // TODO load cache from json
 
@@ -12,7 +13,7 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
     }
 
     // parse JSON object
-    const cache = JSON.parse(data.toString());
+    cache = JSON.parse(data.toString());
 
     // print JSON object
     console.log(cache);
