@@ -1,2 +1,3 @@
 # ASCII-Rainbow
-Custom Rainbow ASCII Art
+Custom Rainbow ASCII Art!
+WIP
