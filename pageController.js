@@ -1,3 +1,4 @@
+const { browser } = require("discord-rpc/src/constants");
 const pageScraper = require("./pageScraper")
 
 
@@ -7,6 +8,8 @@ async function scrapeAll(browserInstance) {
         browser = await browserInstance;
         await pageScraper.scraper(browser);
     } catch(err) {
-        console
+        console.log("An error occurred with the browser: ", err);
     }
 }
+
+module.exports = (browserInstance) => scrapeAll(browserInstance)
