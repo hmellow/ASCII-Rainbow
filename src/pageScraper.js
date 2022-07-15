@@ -112,7 +112,7 @@ const scraperObject = {
             outputB64.push(base64_url);
         }
         console.log(outputB64);
-        // await browser.close();
+        await browser.close();
     }   
 }
 
