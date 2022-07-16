@@ -120,7 +120,6 @@ const scraperObject = {
                     base64ToImage(base64_url, path/*, optionalObj*/);
                     break;
                 } catch {
-                    console.log("I tried");
                     continue;
                 }
             }
