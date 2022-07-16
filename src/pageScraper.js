@@ -103,26 +103,29 @@ const scraperObject = {
             // Unique selector for the right copy button. Don't ask questions, just leave it alone. Please.
             await page.waitForSelector("div.tool-chained>div:nth-child(4)>div:nth-child(1)>div:nth-child(2)>div>div:nth-child(2)>div:nth-child(1)>div:nth-child(4)");
 
-            const base64_url = await page.evaluate(_ => {
-                // Press the copy button, which selects the text
-                let copy = document.getElementsByClassName("widget-copy")[3];
-                copy.click();
-      
-                // Get and return the selected text (the base64 URL)
-                let selection = window.getSelection().toString();
-                return selection;
-            });
+            const waiter = {
+                set imgUrl(link) {
+                    base64ToImage(link, path/*, optionalObj*/);
+                },
+              }
 
-            const path ='./cache/img/';
-
-            while (true) {
-                try {
-                    base64ToImage(base64_url, path/*, optionalObj*/);
-                    break;
-                } catch {
-                    continue;
-                }
+            async function getUrl() {
+                const base64_url = await page.evaluate(_ => {
+                    // Press the copy button, which selects the text
+                    let copy = document.getElementsByClassName("widget-copy")[3];
+                    copy.click();
+        
+                    // Get and return the selected text (the base64 URL)
+                    let selection = window.getSelection().toString();
+                    return selection;
+                });
+                return base64_url;
             }
+
+            
+            const path ='./cache/img/';
+            waiter.imgUrl = await getUrl();
+            // base64ToImage(await getUrl(), path/*, optionalObj*/);
 
             delete base64_url;
         }
