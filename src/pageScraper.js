@@ -1,4 +1,6 @@
+const base64ToImage = require('base64-to-image');
 const fs = require('fs');
+
 let inputText = "Testing";
 const colorsArr = ["rgb(255, 0, 0)", "rgb(255, 165, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 0, 255)", "rgb(143,0,255)"];
 let outputB64 = [];
@@ -100,6 +102,7 @@ const scraperObject = {
 
             // Unique selector for the right copy button. Don't ask questions, just leave it alone. Please.
             await page.waitForSelector("div.tool-chained>div:nth-child(4)>div:nth-child(1)>div:nth-child(2)>div>div:nth-child(2)>div:nth-child(1)>div:nth-child(4)");
+
             const base64_url = await page.evaluate(_ => {
                 // Press the copy button, which selects the text
                 let copy = document.getElementsByClassName("widget-copy")[3];
@@ -109,10 +112,25 @@ const scraperObject = {
                 let selection = window.getSelection().toString();
                 return selection;
             });
-            outputB64.push(base64_url);
+
+            const path ='./cache/img/';
+
+            while (true) {
+                try {
+                    base64ToImage(base64_url, path/*, optionalObj*/);
+                    break;
+                } catch {
+                    console.log("I tried");
+                    continue;
+                }
+            }
+
+            delete base64_url;
         }
-        console.log(outputB64);
+
+
         await browser.close();
+
     }   
 }
 
