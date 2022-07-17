@@ -1,5 +1,6 @@
 const base64ToImage = require('base64-to-image');
 const fs = require('fs');
+const { base64ImageToBlob } = require('./b64toimg');
 
 let inputText = "Testing";
 const colorsArr = ["rgb(255, 0, 0)", "rgb(255, 165, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 0, 255)", "rgb(143,0,255)"];
@@ -103,34 +104,32 @@ const scraperObject = {
             // Unique selector for the right copy button. Don't ask questions, just leave it alone. Please.
             await page.waitForSelector("div.tool-chained>div:nth-child(4)>div:nth-child(1)>div:nth-child(2)>div>div:nth-child(2)>div:nth-child(1)>div:nth-child(4)");
 
+
+
             const waiter = {
-                set imgUrl(link) {
-                    base64ToImage(link, path/*, optionalObj*/);
-                },
-              }
+                set base64_url(cont) {
+                  setTimeout((() => {console.log(cont.length)}), 1000)}
+            };
 
-            async function getUrl() {
-                const base64_url = await page.evaluate(_ => {
-                    // Press the copy button, which selects the text
-                    let copy = document.getElementsByClassName("widget-copy")[3];
-                    copy.click();
-        
-                    // Get and return the selected text (the base64 URL)
-                    let selection = window.getSelection().toString();
-                    return selection;
-                });
-                return base64_url;
-            }
+            waiter.base64_url = await page.evaluate(_ => {
+                // Press the copy button, which selects the text
+                let copy = document.getElementsByClassName("widget-copy")[3];
+                copy.click();
+      
+                // Get and return the selected text (the base64 URL)
+                let selection = window.getSelection().toString();
+                return selection;
+            });
+            // console.log(base64_url.length);
 
-            
-            const path ='./cache/img/';
-            waiter.imgUrl = await getUrl();
-            // base64ToImage(await getUrl(), path/*, optionalObj*/);
-
-            delete base64_url;
+            // let blobb;
+            // try {
+            //     blobb = base64ImageToBlob(base64_url);
+            // } catch (err) {
+            //     throw err;
+            // }
+            // console.log(blobb.size);
         }
-
-
         await browser.close();
 
     }   
