@@ -28,6 +28,8 @@ Because it looks cool!
 
 - Add support for spaces, punctuation, & special characters
 
+- Background options
+
 - Increased image generation speed
 
 - Option to make rainbow by ASCII character
