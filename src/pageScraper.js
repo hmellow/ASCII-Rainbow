@@ -24,8 +24,9 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
 
 (async () => {
     const browser = await chromium.launch({
-        headless: true,
-        downloadsPath: "./cache/img/"
+        headless: false,
+        downloadsPath: "./cache/img/",
+        slowMo: 2000
     });
     const page = await browser.newPage();
 
@@ -81,6 +82,32 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
     await page.fill('[data-index="font-size"]', "12px");
     // Check the box for bold
     await page.dispatchEvent('[data-index="bold"]', 'click');
+
+
+
+    // Convert to image and make R A I N B O W
+    for(let i = 6; i < artOutput.length + 6; i++) {
+        // Set color
+        await page.fill('[data-index="text-color"]', colorsArr[i % 6]);
+        // Input ASCII
+        await page.fill('.data-wrapper textarea', artOutput[i - 6]);
+        await page.type('.data-wrapper textarea', " "); // To make sure input is recognized
+
+        // Download image
+        const [ download ] = await Promise.all([
+            page.waitForEvent('download'),
+            page.locator('div.page-content:nth-child(1) div.page.container:nth-child(2) div.content div.all-tools-container:nth-child(4) div.section.sides.tool.tool-primary div.body div.sides-wrapper.clearfix div.side.output:nth-child(2) div.side-box:nth-child(2) div.side-widgets div.side-widgets-wrapper > div.widget:nth-child(3)').click(),
+            page.locator('div.page-content:nth-child(1) div.page.container:nth-child(2) div.content div.all-tools-container:nth-child(4) div.section.sides.tool.tool-primary div.body div.sides-wrapper.clearfix div.side.output:nth-child(2) div.side-box:nth-child(2) div.side-widgets.toggled div.side-widgets-toggle div.toggle-wrapper div.widget-toggle.toggle-save-as.toggle-active:nth-child(1) > div.widget.widget-save-as:nth-child(1)').click(),
+
+        ]);
+        // Wait for the download process to complete
+        const path = await download.path();
+
+        // Rename file
+        fs.rename(path, `./cache/img/${i-6}.png`, function(err) {
+            if (err) console.log(err);
+        });
+    }
 
     await browser.close();
   })();
