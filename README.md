@@ -34,6 +34,8 @@ Because it looks cool!
 
 - Option to make rainbow by ASCII character
 
+- More color options
+
 - Better organized code
 
 
