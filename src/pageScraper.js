@@ -69,5 +69,17 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
     });
 
 
+    // New page
+    await page.goto("https://onlineasciitools.com/convert-ascii-to-image");
+    // Page settings
+    // Font choice
+    await page.selectOption("#option-typeface-dc1e0e21", "monospace")
+    // Background color: clear
+    await page.fill("#option-background-color-dc1e0e21", "(255, 255, 255, 0)");
+    // Font size
+    await page.fill("#option-font-size-dc1e0e21", "12px");
+    // Check the box for bold
+    await page.check("#option-bold-dc1e0e21");
+
     await browser.close();
   })();
