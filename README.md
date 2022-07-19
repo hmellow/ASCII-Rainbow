@@ -40,7 +40,7 @@ Because it looks cool!
 
 ###### This project is based off another:
 
-I got the inspiration for this project as well as a few code ideas from [here](https://github.com/ajmeese7/readme-ascii))
+I got the inspiration for this project as well as a few code ideas from [here](https://github.com/ajmeese7/readme-ascii)
 
 
 
