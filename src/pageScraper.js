@@ -114,6 +114,11 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
     mergeImg(outputImgs).then((img) => {
         // Save image as file
         img.write('out.png', () => console.log('done'));
+
+        // Delete temporary files
+        for(let i = 0; i < outputImgs.length; i++) {
+            fs.unlinkSync(`./cache/img/${i}.png`);
+        }
     });
 
 
