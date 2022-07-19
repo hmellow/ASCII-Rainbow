@@ -79,7 +79,7 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
     // Font size
     await page.fill('[data-index="font-size"]', "12px");
     // Check the box for bold
-    await page.check('[data-index="bold"]');
+    await page.dispatchEvent('[data-index="bold"]', 'click');
 
-    // await browser.close();
+    await browser.close();
   })();
