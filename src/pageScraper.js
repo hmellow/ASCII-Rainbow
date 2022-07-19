@@ -24,7 +24,7 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
 
 (async () => {
     const browser = await chromium.launch({
-        headless: true
+        headless: false
     });
     const page = await browser.newPage();
 
@@ -73,13 +73,13 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
     await page.goto("https://onlineasciitools.com/convert-ascii-to-image");
     // Page settings
     // Font choice
-    await page.selectOption("#option-typeface-dc1e0e21", "monospace")
+    await page.selectOption('[data-index="typeface"]', "monospace")
     // Background color: clear
-    await page.fill("#option-background-color-dc1e0e21", "(255, 255, 255, 0)");
+    await page.fill('[data-index="background-color"]', "(255, 255, 255, 0)");
     // Font size
-    await page.fill("#option-font-size-dc1e0e21", "12px");
+    await page.fill('[data-index="font-size"]', "12px");
     // Check the box for bold
-    await page.check("#option-bold-dc1e0e21");
+    await page.check('[data-index="bold"]');
 
-    await browser.close();
+    // await browser.close();
   })();
