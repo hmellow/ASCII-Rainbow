@@ -24,7 +24,8 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
 
 (async () => {
     const browser = await chromium.launch({
-        headless: false
+        headless: true,
+        downloadsPath: "./cache/img/"
     });
     const page = await browser.newPage();
 
