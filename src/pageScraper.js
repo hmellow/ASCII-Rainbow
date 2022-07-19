@@ -1,11 +1,11 @@
-const base64ToImage = require('base64-to-image');
+const mergeImg = require("merge-img");
 const fs = require('fs');
 const {chromium} = require('playwright');
 
 
-let inputText = "bcd";
+let inputText = "Testing";
 const colorsArr = ["rgb(255, 0, 0)", "rgb(255, 165, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 0, 255)", "rgb(143,0,255)"];
-let outputB64 = [];
+let outputImgs = [];
 let font = "Alpha";
 let cache = {};
 
@@ -24,9 +24,9 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
 
 (async () => {
     const browser = await chromium.launch({
-        headless: false,
+        headless: true,
         downloadsPath: "./cache/img/",
-        slowMo: 2000
+        // slowMo: 2000
     });
     const page = await browser.newPage();
 
@@ -103,11 +103,19 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
         // Wait for the download process to complete
         const path = await download.path();
 
+        // Add path to output array
+        outputImgs.push(`./cache/img/${i-6}.png`);
         // Rename file
-        fs.rename(path, `./cache/img/${i-6}.png`, function(err) {
+        fs.rename(path, outputImgs[i-6], function(err) {
             if (err) console.log(err);
         });
     }
+    // Merge images
+    mergeImg(outputImgs).then((img) => {
+        // Save image as file
+        img.write('out.png', () => console.log('done'));
+    });
+
 
     await browser.close();
   })();
