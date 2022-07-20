@@ -7,3 +7,14 @@ updates:
     target-branch: "svelte"
     labels:
         - 'dependencies'
+        - 'NPM Stuff'
+        
+    - package-ecosystem: 'github-actions'
+      directory: '/'
+      schedule:
+          interval: 'daily'
+      commit-message:
+          prefix: 'ci'
+      labels:
+          - 'dependencies'
+          - 'Github Actions'
