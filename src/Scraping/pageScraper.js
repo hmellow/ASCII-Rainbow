@@ -3,8 +3,9 @@ const fs = require('fs');
 const {chromium} = require('playwright');
 
 
-let inputText = "costbot";
-const colorsArr = ["rgb(255, 0, 0)", "rgb(255, 165, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 0, 255)", "rgb(143,0,255)"];let outputImgs = [];
+let inputText = "ASCII";
+const colorsArr = ["rgb(255, 0, 0)", "rgb(255, 165, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 0, 255)", "rgb(143,0,255)"];
+let outputImgs = [];
 let font = "Alpha";
 let cache = {};
 
@@ -76,7 +77,7 @@ fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
     // Font choice
     await page.selectOption('[data-index="typeface"]', "monospace")
     // Background color: clear
-    await page.fill('[data-index="background-color"]', "rgb(37, 37, 37, 255)");
+    await page.fill('[data-index="background-color"]', "rgb(37, 37, 37, 0");
     // Font size
     await page.fill('[data-index="font-size"]', "12px");
     // Check the box for bold
