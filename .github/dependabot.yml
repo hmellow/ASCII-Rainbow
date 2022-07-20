@@ -9,12 +9,12 @@ updates:
         - 'dependencies'
         - 'NPM Stuff'
         
-    - package-ecosystem: 'github-actions'
-      directory: '/'
-      schedule:
-          interval: 'monthly'
-      commit-message:
-          prefix: 'ci'
-      labels:
-          - 'dependencies'
-          - 'Github Actions'
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+        interval: 'monthly'
+    commit-message:
+        prefix: 'ci'
+    labels:
+      - 'dependencies'
+      - 'Github Actions'
