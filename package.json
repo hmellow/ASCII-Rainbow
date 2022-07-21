@@ -1,0 +1,33 @@
+{
+  "name": "ascii-rainbow",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "package": "svelte-kit package",
+    "preview": "vite preview",
+    "prepare": "svelte-kit sync",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/kit": "next",
+    "eslint": "^8.16.0",
+    "eslint-plugin-svelte3": "^4.0.0",
+    "svelte": "^3.44.0",
+    "vite": "^3.0.0"
+  },
+  "type": "module",
+  "description": "Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).",
+  "main": "svelte.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PiPinecone/ASCII-Rainbow.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PiPinecone/ASCII-Rainbow/issues"
+  },
+  "homepage": "https://github.com/PiPinecone/ASCII-Rainbow#readme"
+}
