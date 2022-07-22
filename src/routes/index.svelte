@@ -1,2 +1,14 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="mainTitle">
+    <img src="../logo.png" alt="ASCII" width="700" height="170">
+</div>
+
+<style>
+    :global(body) {
+        background-color: darkslategray;
+    }
+
+    .mainTitle {
+        text-align: center;
+        background-color: rgb(42, 42, 42);
+    }
+</style>
