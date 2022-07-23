@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/PiPinecone/ASCII-Rainbow/issues"
   },
-  "homepage": "https://github.com/PiPinecone/ASCII-Rainbow#readme"
+  "homepage": "https://github.com/PiPinecone/ASCII-Rainbow#readme",
+  "dependencies": {
+    "playwright": "^1.24.0"
+  }
 }
