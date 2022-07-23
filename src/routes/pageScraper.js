@@ -10,7 +10,6 @@ let font = "Alpha";
 let cache = {};
 
 
-export function imgGen() {
     // read JSON object from file
     fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
         if (err) {
@@ -126,4 +125,3 @@ export function imgGen() {
 
         await browser.close();
     })();
-}
