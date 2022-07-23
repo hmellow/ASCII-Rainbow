@@ -1,5 +1,5 @@
 <script>
-    import { imgGen } from './src/Scraping/pageScraper.js'
+    import { imgGen } from '$lib/Scraping/pageScraper.js'
 </script>
 
 <div class="mainTitle">
@@ -8,7 +8,7 @@
 
 <br>
 
-<div class="userInteraction">
+<div class="userInteraction" on:click={imgGen}>
     <button class="activateButton">
         Submit
     </button>
