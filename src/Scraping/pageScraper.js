@@ -1,6 +1,6 @@
-const mergeImg = require("merge-img");
-const fs = require('fs');
-const {chromium} = require('playwright');
+import mergeImg from "merge-img";
+import fs from 'fs';
+import { chromium } from 'playwright';
 
 
 let inputText = "ASCII";
