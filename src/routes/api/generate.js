@@ -1,5 +1,4 @@
-import { imgGen } from '$lib/Scraping/pageScraper.js'
-import { request } from 'playwright';
+import { imgGen } from '$lib/imageProcessing/merger.js'
 
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
