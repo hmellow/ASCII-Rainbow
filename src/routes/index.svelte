@@ -53,7 +53,7 @@
         border: none;
         border-bottom: 2px solid greenyellow;
         border-radius: 4px;
-        margin-right: 15px;
+        margin-right: 25px;
     }
 
     input[type=submit] {
@@ -63,7 +63,7 @@
         border-color:rgb(110, 110, 110);
         border-width: 2.5pt;
         border-radius: 5pt;
-        padding: 10px 30px;
+        padding: 12px 30px;
 
         font-size: 14pt;
         font-weight: 600;
