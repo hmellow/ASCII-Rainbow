@@ -8,9 +8,9 @@ export async function POST({ request }) {
   let input = output.get("inputString");
 
     return {
-      status: 200,
+      status: 303,
       headers: {
-        'access-control-allow-origin': '*'
+        location: '/'
       },
       body: {
         imgPath: await imgGen(input)
