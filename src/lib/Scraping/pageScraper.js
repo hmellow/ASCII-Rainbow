@@ -3,14 +3,14 @@ import fs from 'fs';
 import { chromium } from 'playwright';
 
 
-let inputText = "Testing";
 const colorsArr = ["rgb(255, 0, 0)", "rgb(255, 165, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 0, 255)", "rgb(143,0,255)"];
 let outputImgs = [];
 let font = "Alpha";
 let cache = {};
 
+export function imgGen(input) {
+    let inputText = input;
 
-export function imgGen() {
     // read JSON object from file
     fs.readFile(`cache/json/${font}.json`, 'utf-8', (err, data) => {
         if (err) {

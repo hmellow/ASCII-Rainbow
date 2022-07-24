@@ -7,7 +7,7 @@
 
 <br>
 
-<form action="/index" method="POST" class="userInteraction">
+<form action="/api/generate" method="POST" class="userInteraction">
     <label>
         Input text:
             <input type="text" name="inputString"/>
@@ -27,6 +27,7 @@
 
     .userInteraction {
         text-align: center;
+        margin-top: 5px;
         display: block;
     }
 
