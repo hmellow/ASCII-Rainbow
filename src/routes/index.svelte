@@ -1,11 +1,13 @@
 <script>
+    
 </script>
 
+
 <div class="mainTitle">
-    <img src="../logo.png" alt="ASCII" width="700" height="170">
+    <img src="../logo.png" alt="ASCII" width="700" height="170"/>
 </div>
 
-<br>
+<br/>
 
 <form action="/api/generate" method="POST" class="userInteraction">
     <label>
@@ -14,6 +16,13 @@
     </label>
         <input type="submit" value="Submit" />
 </form>
+
+<br/>
+
+<div class="imageBox">
+    <img src="../out.png" alt="Output" width="225" height="275"/>
+</div>
+
 
 <style>
     :global(body) {
@@ -29,6 +38,17 @@
         text-align: center;
         margin-top: 5px;
         display: block;
+    }
+
+    .imageBox {
+        border: 5px solid white;
+        background-color: white;
+
+        width: 850px;
+        height: 250px;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     label {
