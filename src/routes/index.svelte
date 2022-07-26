@@ -32,7 +32,7 @@
 
     .header {
         text-align: center;
-        background-color: rgb(150, 150, 150);
+        background-color: rgb(76, 76, 76);
         padding: 10px;
     }
 
@@ -45,9 +45,9 @@
     .imageBox {
         outline: 1.5px solid white;
         outline-offset: 0px;
-        border: 5px rgb(150, 150, 150);
+        border: 5px rgb(76, 76, 76);
         border-radius: 5px;
-        background-color: rgb(150, 150, 150);
+        background-color: rgb(76, 76, 76);
 
         width: 850px;
         height: 250px;
