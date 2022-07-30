@@ -1,9 +1,9 @@
 <script>
-    
+    export let imgPath = "";
 </script>
 
 
-<div class="mainTitle">
+<div class="header">
     <img src="../logo.png" alt="ASCII" width="700" height="170"/>
 </div>
 
@@ -14,24 +14,26 @@
         Input text:
             <input type="text" name="inputString"/>
     </label>
-        <input type="submit" value="Submit" />
+    <input type="submit" value="Submit" />
 </form>
 
 <br/>
 
 <div class="imageBox">
-    <img src="../out.png" alt="Output" width="225" height="275"/>
+    <img src={imgPath} alt="Output" id="outputImage" width="225" height="275" />
 </div>
 
 
 <style>
     :global(body) {
-        background-color: darkslategray;
+        background-color: rgb(36, 36, 36);
+        margin: 0 auto;
     }
 
-    .mainTitle {
+    .header {
         text-align: center;
-        background-color: rgb(42, 42, 42);
+        background-color: rgb(76, 76, 76);
+        padding: 10px;
     }
 
     .userInteraction {
@@ -41,8 +43,11 @@
     }
 
     .imageBox {
-        border: 5px solid white;
-        background-color: white;
+        outline: 1.5px solid white;
+        outline-offset: 0px;
+        border: 5px rgb(76, 76, 76);
+        border-radius: 5px;
+        background-color: rgb(76, 76, 76);
 
         width: 850px;
         height: 250px;
@@ -64,6 +69,26 @@
         background-color: rgb(45, 45, 45);
 
         color: white;
+        
+        font-size: medium;
+        font-weight: 300;
+
+        width: 200px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+
+        border: none;
+        border-bottom: 2px solid greenyellow;
+        border-radius: 4px;
+        margin-right: 25px;
+    }
+
+    input[type=text]:focus{
+        outline: none;
+
+        background-color: rgb(45, 45, 45);
+        color: white;
+
         font-size: medium;
         font-weight: 300;
 
@@ -78,15 +103,31 @@
     }
 
     input[type=submit] {
-        color: rgb(255, 255, 255);
-        background-color: rgb(75, 75, 75);
+        color: rgb(0, 0, 0);
+        background-color: greenyellow;
 
-        border-color:rgb(110, 110, 110);
-        border-width: 2.5pt;
-        border-radius: 5pt;
+        border-style: solid;
+        border-color: greenyellow;
+        border-radius: 5px;
+
         padding: 12px 30px;
 
         font-size: 14pt;
         font-weight: 600;
+
+        transition-duration: 0.2s;
+    }
+
+    input[type=submit]:hover {
+        background-color: transparent;
+        color: white;
     }
 </style>
+
+{#if imgPath == ""}
+    <style>
+        #outputImage {
+            visibility: hidden;
+        }
+    </style>
+{/if}
