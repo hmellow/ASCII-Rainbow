@@ -1,5 +1,4 @@
-import mergeImg from "merge-img";
-import Jimp from "jimp";
+import amalg from "image-amalgamator";
 
 const colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Violet"];
 
@@ -15,20 +14,7 @@ export function imgGen(input) {
         outputImgs.push(`./static/Letters/${colors[i % 6]}/${inputText[i - 6]}.png`);
     }
 
-    // Merge images
-    mergeImg(outputImgs).then((img) => {
-        // Save image as file
-        img.write('./cache/img/out.png', () => console.log('done'));
-    });
-
-    // Resize image
-    Jimp.read('./cache/img/out.png', (err, outImg) => {
-        if (err) throw err;
-        outImg
-          .scaleToFit(800, 200) // scale for output box
-          .write('./cache/img/out.png'); // save
-    });
-    
-
+    // Merge & scale image: https://github.com/PiPinecone/Image-Amalgamator
+    amalg.mergeImages(outputImgs, './cache/img/out.png', 223.5, 273.5);
     return './out.png';
 }

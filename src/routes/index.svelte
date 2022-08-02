@@ -4,7 +4,7 @@
 
 
 <div class="header">
-    <img src="../logo.png" alt="ASCII" width="700" height="170"/>
+    <img src="../static/logo.png" alt="ASCII" width="700" height="170"/>
 </div>
 
 <br/>
