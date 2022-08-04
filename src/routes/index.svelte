@@ -1,6 +1,6 @@
 <script context="module">
     export function load({ url }) {
-        let path = url.searchParams.get('imgPath')
+        let path = url.searchParams.get('imgPath') || ""
         return {
             props: {
                 path
@@ -12,11 +12,12 @@
 <script>
     export let path;
     $: p2 = path;
+    console.log(p2);
 </script>
 
 
 <div class="header">
-    <img src="../static/logo.png" alt="ASCII" width="700" height="170"/>
+    <img src="./logo.png" alt="ASCII" width="700" height="170"/>
 </div>
 
 <br/>
@@ -66,6 +67,8 @@
         margin-top: 50px;
         margin-left: auto;
         margin-right: auto;
+
+        text-align: center;
     }
 
     label {
@@ -136,7 +139,7 @@
     }
 </style>
 
-{#if path == ""}
+{#if p2 == ""}
     <style>
         #outputImage {
             visibility: hidden;

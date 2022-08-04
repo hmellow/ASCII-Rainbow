@@ -17,7 +17,7 @@ export function imgGen(input) {
     }
 
     // Merge & scale images: https://github.com/PiPinecone/Image-Amalgamator
-    amalg.mergeImages(outputImgs, finPath, 223.5, 273.5);
+    amalg.mergeImages(outputImgs, finPath/*, 223.5, 273.5*/);
 
     return finPath;
 }
