@@ -19,13 +19,17 @@
 
 <br/>
 
-<form action="/api/generate" method="POST" class="userInteraction">
-    <label>
-        Input text:
-            <input type="text" name="inputString"/>
-    </label>
-    <input type="submit" value="Submit" />
-</form>
+<div class="userInteraction">
+    <form action="/api/generate" method="POST" class="userInput">
+        <label>
+            Input text:
+                <input type="text" name="inputString"/>
+        </label>
+        <input type="submit" value="Submit" />
+    </form>
+
+    <button id="downloadButton">Download</button>
+</div>
 
 <br/>
 
@@ -48,6 +52,13 @@
     }
 
     .userInteraction {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .userInput {
         text-align: center;
         margin-top: 5px;
         display: block;
@@ -137,6 +148,27 @@
     }
 
     input[type=submit]:hover {
+        background-color: transparent;
+        color: white;
+    }
+
+    #downloadButton {
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 128, 255);
+
+        border-style: solid;
+        border-color: rgb(0, 128, 255);
+        border-radius: 5px;
+
+        padding: 12px 30px;
+
+        font-size: 14pt;
+        font-weight: 600;
+
+        transition-duration: 0.2s;
+    }
+
+    #downloadButton:hover {
         background-color: transparent;
         color: white;
     }
