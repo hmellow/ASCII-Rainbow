@@ -1,5 +1,17 @@
+<script context="module">
+    export function load({ url }) {
+        let path = url.searchParams.get('imgPath')
+        console.log(path);
+        return {
+            props: {
+                path
+            }
+        };
+    }
+</script>
+
 <script>
-    export let imgPath = "";
+    export let path;
 </script>
 
 
@@ -20,7 +32,7 @@
 <br/>
 
 <div class="imageBox">
-    <img src={imgPath} alt="Output" id="outputImage" width="225" height="275" />
+    <img src={path} alt="Output" id="outputImage" width="225" height="275" />
 </div>
 
 
@@ -124,7 +136,7 @@
     }
 </style>
 
-{#if imgPath == ""}
+{#if path == ""}
     <style>
         #outputImage {
             visibility: hidden;

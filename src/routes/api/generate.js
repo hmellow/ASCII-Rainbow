@@ -9,7 +9,7 @@ export async function POST({ request }) {
     return {
       status: 303,
       headers: {
-        location: '/'
+        location: `/?imgPath=${await imgGen(input)}`
       },
       body: {
         imgPath: await imgGen(input)

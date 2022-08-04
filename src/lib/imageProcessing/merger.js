@@ -1,10 +1,12 @@
 import amalg from "image-amalgamator";
+import Jimp from "jimp";
 
 const colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Violet"];
 
 export function imgGen(input) {
     let outputImgs = [];
 
+    const finPath = `./cache/img/${input.toLowerCase()}.png`;
     let inputText = input.toUpperCase();
     inputText = inputText.split("");
     
@@ -14,7 +16,10 @@ export function imgGen(input) {
         outputImgs.push(`./static/Letters/${colors[i % 6]}/${inputText[i - 6]}.png`);
     }
 
-    // Merge & scale image: https://github.com/PiPinecone/Image-Amalgamator
-    amalg.mergeImages(outputImgs, './cache/img/out.png', 223.5, 273.5);
-    return './out.png';
+    // Merge & scale images: https://github.com/PiPinecone/Image-Amalgamator
+    amalg.mergeImages(outputImgs, finPath, 223.5, 273.5);
+
+    return finPath;
 }
+
+imgGen("hello", "./cache/img/outt.png");
