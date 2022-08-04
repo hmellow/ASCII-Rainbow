@@ -8,13 +8,10 @@
         };
     }
 </script>
-
+    
 <script>
     export let path;
-    $: p2 = path;
-    console.log(p2);
 </script>
-
 
 <div class="header">
     <img src="./logo.png" alt="ASCII" width="700" height="170"/>
@@ -33,9 +30,10 @@
 <br/>
 
 <div class="imageBox">
-    <img src={p2} alt="Output" id="outputImage" width="225" height="275" />
+    {#key path}
+        <img src={path} alt="{path}" id="outputImage" width="225" height="275" />
+    {/key}
 </div>
-
 
 <style>
     :global(body) {
@@ -69,6 +67,11 @@
         margin-right: auto;
 
         text-align: center;
+    }
+
+    #outputImage {
+        width: 100%;
+        height: 100%;
     }
 
     label {
@@ -139,10 +142,12 @@
     }
 </style>
 
-{#if p2 == ""}
+<!--
+{#if typeof(path) == "string"}
     <style>
         #outputImage {
             visibility: hidden;
         }
     </style>
 {/if}
+-->
