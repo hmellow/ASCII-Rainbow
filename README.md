@@ -1,4 +1,4 @@
-<img title="Logo" src="https://github.com/PiPinecone/ASCII-Rainbow/blob/main/logo.png" alt="Made with ASCII-Rainbow!">
+<img title="Logo" src="https://github.com/PiPinecone/ASCII-Rainbow/blob/main/static/logo.png" alt="Made with ASCII-Rainbow!">
 
 ---
 
