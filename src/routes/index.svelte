@@ -61,7 +61,7 @@
     .userInput {
         text-align: center;
         margin-top: 5px;
-        display: block;
+        display: flex;
     }
 
     .imageBox {
@@ -165,7 +165,7 @@
         font-size: 14pt;
         font-weight: 600;
 
-        transition-duration: 0.2s;
+        transition-duration: 0.2s
     }
 
     #downloadButton:hover {
