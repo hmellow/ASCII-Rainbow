@@ -11,8 +11,6 @@
 
 <script>
     export let path;
-    $: p2 = path;
-    console.log(p2);
 </script>
 
 
@@ -33,7 +31,7 @@
 <br/>
 
 <div class="imageBox">
-    <img src={p2} alt="Output" id="outputImage" width="225" height="275" />
+    <img src={path} alt="Output" id="outputImage" width="225" height="275" />
 </div>
 
 
@@ -139,7 +137,7 @@
     }
 </style>
 
-{#if p2 == ""}
+{#if path == ""}
     <style>
         #outputImage {
             visibility: hidden;
