@@ -1,9 +1,8 @@
 import amalg from "image-amalgamator";
-import Jimp from "jimp";
 
 const colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Violet"];
 
-export function imgGen(input) {
+export async function imgGen(input) {
     let outputImgs = [];
 
     const finPath = `./cache/img/${input.toLowerCase()}.png`;
@@ -17,7 +16,7 @@ export function imgGen(input) {
     }
 
     // Merge & scale images: https://github.com/PiPinecone/Image-Amalgamator
-    amalg.mergeImages(outputImgs, finPath/*, 223.5, 273.5*/);
+    await amalg.mergeImages(outputImgs, finPath/*, 223.5, 273.5*/);
 
     return finPath;
 }
