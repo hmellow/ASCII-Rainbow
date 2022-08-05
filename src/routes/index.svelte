@@ -25,10 +25,14 @@
             Input text:
                 <input type="text" name="inputString"/>
         </label>
-        <input type="submit" value="Submit" />
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
     </form>
 
-    <button id="downloadButton">Download</button>
+    <div>
+        <button id="downloadButton">Download</button>
+    </div>
 </div>
 
 <br/>
@@ -159,6 +163,7 @@
         border-radius: 5px;
 
         padding: 12px 30px;
+        margin-top: 5px;
 
         font-size: 14pt;
         font-weight: 600;
@@ -179,4 +184,3 @@
         }
     </style>
 {/if}
--->
