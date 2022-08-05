@@ -16,7 +16,7 @@ export async function imgGen(input) {
     }
 
     // Merge & scale images: https://github.com/PiPinecone/Image-Amalgamator
-    await amalg.mergeImages(outputImgs, finPath, 223.5, 273.5);
+    await amalg.mergeImages(outputImgs, finPath /*, 500, 273.5*/);
 
     return finPath;
 }

@@ -31,7 +31,7 @@
 <br/>
 
 <div class="imageBox">
-    <img src={path} alt="Output" id="outputImage" width="225" height="275" />
+    <img src={path} alt="Output" id="outputImage" width="850" height="250" />
 </div>
 
 
