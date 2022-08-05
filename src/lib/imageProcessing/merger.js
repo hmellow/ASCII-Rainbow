@@ -21,5 +21,3 @@ export function imgGen(input) {
 
     return finPath;
 }
-
-imgGen("hello", "./cache/img/outt.png");
