@@ -5,14 +5,15 @@ import { imgGen } from '$lib/imageProcessing/merger.js'
 export async function POST({ request }) {
   let output = await request.formData();
   let input = output.get("inputString");
+  let fnRet = await imgGen(input);
 
     return {
       status: 303,
       headers: {
-        location: `/?imgPath=${await imgGen(input)}`
+        location: `/?imgPath=${fnRet}`
       },
       body: {
-        imgPath: await imgGen(input)
+        imgPath: fnRet
       }
     };
   }
