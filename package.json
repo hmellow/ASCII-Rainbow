@@ -14,7 +14,7 @@
     "@sveltejs/adapter-node": "^1.0.0-next.83",
     "@sveltejs/kit": "next",
     "eslint-plugin-svelte3": "^4.0.0",
-    "image-amalgamator": "^1.3.0",
+    "image-amalgamator": "^1.4.0",
     "jimp": "^0.16.1",
     "svelte": "^3.44.0",
     "vite": "^3.0.0"
