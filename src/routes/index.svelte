@@ -1,6 +1,6 @@
 <script context="module">
     export function load({ url }) {
-        let path = url.searchParams.get('imgPath') || ""
+        let path = url.searchParams.get('imgPath') || "";
         return {
             props: {
                 path
@@ -11,6 +11,18 @@
     
 <script>
     export let path;
+    async function download() {
+        console.log("downloading");
+        let url = window.URL;
+        let link = url.createObjectURL(await path.blob());
+
+        let anchor = document.createElement("a");
+        anchor.setAttribute("download", "image.png");
+        anchor.setAttribute("href", link);
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+    };
 </script>
 
 <div class="header">
@@ -31,7 +43,11 @@
     </form>
 
     <div>
-        <button id="downloadButton">Download</button>
+        {#if path == ""}
+            <button disabled id="downloadButtonDisabled">Download</button>
+        {:else}
+            <button on:click={download} id="downloadButton">Download</button>
+        {/if}
     </div>
 </div>
 
@@ -147,6 +163,7 @@
         font-weight: 600;
 
         transition-duration: 0.2s;
+        cursor: pointer;
     }
 
     input[type=submit]:hover {
@@ -168,12 +185,31 @@
         font-size: 14pt;
         font-weight: 600;
 
-        transition-duration: 0.2s
+        transition-duration: 0.2s;
+        cursor: pointer;
     }
 
     #downloadButton:hover {
         background-color: transparent;
         color: white;
+    }
+
+    #downloadButtonDisabled {
+        color: rgb(255, 255, 255);
+        background-color: rgb(128, 128, 128);
+
+        border-style: solid;
+        border-color: rgb(128, 128, 128);
+        border-radius: 5px;
+
+        padding: 12px 30px;
+        margin-top: 5px;
+
+        font-size: 14pt;
+        font-weight: 600;
+
+        transition-duration: 0.2s;
+        cursor: not-allowed;
     }
 </style>
 

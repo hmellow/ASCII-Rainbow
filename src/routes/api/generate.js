@@ -10,7 +10,8 @@ export async function POST({ request }) {
     return {
       status: 303,
       headers: {
-        location: `/?imgPath=${fnRet}`
+        location: `/?imgPath=${fnRet}`,
+        'access-control-allow-origin': '*'
       },
       body: {
         imgPath: fnRet
