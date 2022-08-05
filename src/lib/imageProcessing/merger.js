@@ -10,7 +10,7 @@ export function imgGen(input) {
     let inputText = input.toUpperCase();
     inputText = inputText.split("");
     
-    // Make the R A I N B O W
+    // Colorize images
     for(let i = 6; i < inputText.length + 6; i++) {
         // Choose colors and push file paths
         outputImgs.push(`./static/Letters/${colors[i % 6]}/${inputText[i - 6]}.png`);
@@ -21,5 +21,3 @@ export function imgGen(input) {
 
     return finPath;
 }
-
-imgGen("hello", "./cache/img/outt.png");
