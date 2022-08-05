@@ -8,11 +8,10 @@
         };
     }
 </script>
-
+    
 <script>
     export let path;
 </script>
-
 
 <div class="header">
     <img src="./logo.png" alt="ASCII" width="700" height="170"/>
@@ -20,20 +19,23 @@
 
 <br/>
 
-<form action="/api/generate" method="POST" class="userInteraction">
-    <label>
-        Input text:
-            <input type="text" name="inputString"/>
-    </label>
-    <input type="submit" value="Submit" />
-</form>
+<div class="userInteraction">
+    <form action="/api/generate" method="POST" class="userInput">
+        <label>
+            Input text:
+                <input type="text" name="inputString"/>
+        </label>
+        <input type="submit" value="Submit" />
+    </form>
+
+    <button id="downloadButton">Download</button>
+</div>
 
 <br/>
 
 <div class="imageBox">
     <img src={path} alt="Output" id="outputImage" width="850" height="250" />
 </div>
-
 
 <style>
     :global(body) {
@@ -48,9 +50,16 @@
     }
 
     .userInteraction {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .userInput {
         text-align: center;
         margin-top: 5px;
-        display: block;
+        display: flex;
     }
 
     .imageBox {
@@ -67,6 +76,11 @@
         margin-right: auto;
 
         text-align: center;
+    }
+
+    #outputImage {
+        width: 100%;
+        height: 100%;
     }
 
     label {
@@ -135,6 +149,27 @@
         background-color: transparent;
         color: white;
     }
+
+    #downloadButton {
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 128, 255);
+
+        border-style: solid;
+        border-color: rgb(0, 128, 255);
+        border-radius: 5px;
+
+        padding: 12px 30px;
+
+        font-size: 14pt;
+        font-weight: 600;
+
+        transition-duration: 0.2s
+    }
+
+    #downloadButton:hover {
+        background-color: transparent;
+        color: white;
+    }
 </style>
 
 {#if path == ""}
@@ -144,3 +179,4 @@
         }
     </style>
 {/if}
+-->
