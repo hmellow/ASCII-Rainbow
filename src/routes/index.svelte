@@ -12,7 +12,8 @@
 <script>
     export let path;
     async function download() {
-        console.log("downloading");
+        console.log("downloading...");
+
         let url = window.URL;
         let link = url.createObjectURL(await path.blob());
 
