@@ -36,7 +36,6 @@ Because it looks cool!
 
 - More color & font options
 
-- Better organized code
 
 
 
