@@ -41,7 +41,8 @@ Because it looks cool!
 
 
 ---
-##### Images generated using: https://github.com/PiPinecone/ascii-rainbow-node/blob/main/src/pageScraper.js
+##### - Images generated using: https://github.com/PiPinecone/ascii-rainbow-node/blob/main/src/pageScraper.js
+##### - Imaged "stitched" together using: https://github.com/PiPinecone/Image-Amalgamator
 
 </br>
 
