@@ -41,10 +41,13 @@ Because it looks cool!
 
 
 ---
+##### Images generated using: https://github.com/PiPinecone/ascii-rainbow-node/blob/main/src/pageScraper.js
+
+</br>
 
 ###### This project is based off another:
 
-I got the inspiration for this project as well as a few code ideas from [here](https://github.com/ajmeese7/readme-ascii)
+Inspiration for this project as well as a few code ideas from [here](https://github.com/ajmeese7/readme-ascii)
 
 
 
