@@ -1,6 +1,6 @@
 <script context="module">
     export function load({ url }) {
-        let path = url.searchParams.get('imgPath') || ""
+        let path = url.searchParams.get('imgPath') || "";
         return {
             props: {
                 path
@@ -8,11 +8,23 @@
         };
     }
 </script>
-
+    
 <script>
     export let path;
-</script>
+    async function download() {
+        console.log("downloading...");
 
+        let url = window.URL;
+        let link = url.createObjectURL(await path.blob());
+
+        let anchor = document.createElement("a");
+        anchor.setAttribute("download", "image.png");
+        anchor.setAttribute("href", link);
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+    };
+</script>
 
 <div class="header">
     <img src="./logo.png" alt="ASCII" width="700" height="170"/>
@@ -20,20 +32,31 @@
 
 <br/>
 
-<form action="/api/generate" method="POST" class="userInteraction">
-    <label>
-        Input text:
-            <input type="text" name="inputString"/>
-    </label>
-    <input type="submit" value="Submit" />
-</form>
+<div class="userInteraction">
+    <form action="/api/generate" method="POST" class="userInput">
+        <label>
+            Input text:
+                <input type="text" name="inputString"/>
+        </label>
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+
+    <div>
+        {#if path == ""}
+            <button disabled id="downloadButtonDisabled">Download</button>
+        {:else}
+            <button on:click={download} id="downloadButton">Download</button>
+        {/if}
+    </div>
+</div>
 
 <br/>
 
 <div class="imageBox">
     <img src={path} alt="Output" id="outputImage" width="850" height="250" />
 </div>
-
 
 <style>
     :global(body) {
@@ -43,22 +66,29 @@
 
     .header {
         text-align: center;
-        background-color: rgb(76, 76, 76);
+        background-color: black;
         padding: 10px;
     }
 
     .userInteraction {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .userInput {
         text-align: center;
         margin-top: 5px;
-        display: block;
+        display: flex;
     }
 
     .imageBox {
         outline: 1.5px solid white;
         outline-offset: 0px;
-        border: 5px rgb(76, 76, 76);
+        border: 5px black;
         border-radius: 5px;
-        background-color: rgb(76, 76, 76);
+        background-color: black;
 
         width: 850px;
         height: 250px;
@@ -67,6 +97,11 @@
         margin-right: auto;
 
         text-align: center;
+    }
+
+    #outputImage {
+        width: 100%;
+        height: 100%;
     }
 
     label {
@@ -129,11 +164,53 @@
         font-weight: 600;
 
         transition-duration: 0.2s;
+        cursor: pointer;
     }
 
     input[type=submit]:hover {
         background-color: transparent;
         color: white;
+    }
+
+    #downloadButton {
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 128, 255);
+
+        border-style: solid;
+        border-color: rgb(0, 128, 255);
+        border-radius: 5px;
+
+        padding: 12px 30px;
+        margin-top: 5px;
+
+        font-size: 14pt;
+        font-weight: 600;
+
+        transition-duration: 0.2s;
+        cursor: pointer;
+    }
+
+    #downloadButton:hover {
+        background-color: transparent;
+        color: white;
+    }
+
+    #downloadButtonDisabled {
+        color: rgb(255, 255, 255);
+        background-color: rgb(128, 128, 128);
+
+        border-style: solid;
+        border-color: rgb(128, 128, 128);
+        border-radius: 5px;
+
+        padding: 12px 30px;
+        margin-top: 5px;
+
+        font-size: 14pt;
+        font-weight: 600;
+
+        transition-duration: 0.2s;
+        cursor: not-allowed;
     }
 </style>
 
